@@ -1,16 +1,12 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import 'firebase/database'
+import 'firebase/firestore'
+import fireBaseConf from './adv-react-23-08-firebase-private'
 
 export const appName = 'adv-react-23-08'
 
-const fbConfig = {
-  apiKey: 'AIzaSyAlWpSCiLQOATDM2O869VEYBfT3kuDuxc0',
-  authDomain: `${appName}.firebaseapp.com`,
-  databaseURL: `https://${appName}.firebaseio.com`,
-  projectId: appName,
-  storageBucket: `${appName}.appspot.com`,
-  messagingSenderId: '842367541781'
-}
+firebase.initializeApp(fireBaseConf)
 
-firebase.initializeApp(fbConfig)
+export const db = firebase.firestore()
+const settings = { timestampsInSnapshots: true }
+db.settings(settings)
